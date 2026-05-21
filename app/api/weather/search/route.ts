@@ -3,17 +3,17 @@ import { searchLocations, WeatherAPIError } from "@/lib/weather-api";
 
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
-  const query = searchParams.get("q");
+  const city = searchParams.get("city");
 
-  if (!query) {
+  if (!city) {
     return NextResponse.json(
-      { error: "Query parameter 'q' is required" },
+      { error: "Query parameter 'city' is required" },
       { status: 400 }
     );
   }
 
   try {
-    const locations = await searchLocations(query);
+    const locations = await searchLocations(city);
     return NextResponse.json(locations);
   } catch (error) {
     if (error instanceof WeatherAPIError) {

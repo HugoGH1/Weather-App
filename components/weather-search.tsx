@@ -35,7 +35,7 @@ export function WeatherSearch({ onSelectCity }: WeatherSearchProps) {
 
       setIsLoading(true)
       try {
-        const response = await fetch(`/api/weather/search?q=${encodeURIComponent(query)}`)
+        const response = await fetch(`/api/weather/search?city=${encodeURIComponent(query)}`)
         if (response.ok) {
           const data = await response.json()
           setSuggestions(data)

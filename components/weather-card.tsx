@@ -72,11 +72,6 @@ export function WeatherCard({ weather }: WeatherCardProps) {
             label="Nubosidad"
             value={`${current.cloud}%`}
           />
-          <WeatherDetail
-            icon={<Droplets className="h-5 w-5" />}
-            label="Precipitacion"
-            value={`${current.condition} mm`}
-          />
         </div>
       </div>
     </div>
