@@ -37,7 +37,7 @@ jobs:
           cache: "npm"
 
       - name: Instalar Dependencias
-        run: npm ci
+        run: npm install --include=dev
 
       - name: Validar Estilo de Código (Lint)
         run: npm run lint
