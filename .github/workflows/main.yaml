@@ -1,0 +1,25 @@
+name: WEATHER APP CI MAIN
+
+on:
+  push:
+    branches:
+      - main
+      - feature/Variables
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  llamar-variables:
+    uses: ./.github/workflows/variables.yml
+    with:
+      app_name: "Wheather-App"
+      node_version: "20"
+
+  llamar-build:
+    needs: llamar-variables
+    uses: ./.github/workflows/build.yml
+    with:
+      node_version: "20"
+    secrets:
+      WEATHER_API_KEY: ${{ secrets.WEATHER_API_KEY }}

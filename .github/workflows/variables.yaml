@@ -1,0 +1,24 @@
+name: Validacion de Variables
+
+on:
+  workflow_call:
+    inputs:
+      app_name:
+        description: "Nombre de la aplicación"
+        required: true
+        type: string
+      node_version:
+        description: "Versión de Node.js"
+        required: true
+        type: string
+
+jobs:
+  check-vars:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mostrar Variables Todas
+        run: |
+          echo "=== REVISANDO CONFIGURACIÓN ==="
+          echo "Nombre de la Aplicación: ${{ inputs.app_name }}"
+          echo "Versión de Node planificada: ${{ inputs.node_version }}"
+          echo "Tipo de Ejecución actual: Validacion de variables desde modulo"

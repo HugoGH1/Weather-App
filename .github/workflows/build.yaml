@@ -1,0 +1,37 @@
+name: Build Next.js Reutilizable
+
+on:
+  workflow_call:
+    inputs:
+      node_version:
+        description: "Versión de Node.js a utilizar"
+        required: true
+        type: string
+    secrets:
+      WEATHER_API_KEY:
+        description: "API Key para el clima"
+        required: true
+
+jobs:
+  build-app:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout del repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ inputs.node_version }}
+          cache: "npm"
+
+      - name: Instalar Dependencias
+        run: npm install
+
+      - name: Validar Estilo de Código (Lint)
+        run: npm run lint
+
+      - name: Construir Proyecto (Build Next.js)
+        run: npm run build
+        env:
+          WEATHER_API_KEY: ${{ secrets.WEATHER_API_KEY }}
