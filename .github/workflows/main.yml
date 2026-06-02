@@ -23,3 +23,9 @@ jobs:
       node_version: "20"
     secrets:
       WEATHER_API_KEY: ${{ secrets.WEATHER_API_KEY }}
+
+  llamar-docker:
+    needs: llamar-build
+    uses: ./.github/workflows/docker.yml
+    with:
+      image_name: "weather-app-image"

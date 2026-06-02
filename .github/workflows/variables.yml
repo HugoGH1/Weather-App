@@ -22,4 +22,3 @@ jobs:
           echo "Nombre de la Aplicación: ${{ inputs.app_name }}"
           echo "Versión de Node planificada: ${{ inputs.node_version }}"
           echo "Tipo de Ejecución actual: Validacion de variables desde modulo"
-          echo "Clave de API del tiempo: ${{ secrets.WEATHER_API_KEY }}"

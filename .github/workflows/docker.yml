@@ -1,0 +1,19 @@
+name: Build Docker Reutilizable
+
+on:
+  workflow_call:
+    inputs:
+      image_name:
+        description: "Nombre de la imagen de Docker"
+        required: true
+        type: string
+
+jobs:
+  build-image:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout del repositorio
+        uses: actions/checkout@v4
+
+      - name: Construir imagen de Docker
+        run: docker build -t ${{ inputs.image_name }}:latest .
